@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 4</title>
+</head>
+<body>
+<label for="number">
+  <input type="number" id="number" placeholder="Nhập số vào đây">
+</label>
+<button onclick="checkNumber()">Kiểm tra</button>
+<p id="result"></p>
+
+<script>
+  function checkNumber() {
+    let n = parseInt(document.getElementById("number").value);
+    let result;
+
+    if (isNaN(n)) {
+      result = "Vui lòng nhập một số hợp lệ!";
+    } else if (n < 2) {
+      result = n + " không phải số nguyên tố.";
+    } else if (n === 2) {
+      result = n + " là số nguyên tố.";
+    } else {
+      let isPrime = true;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+      result = isPrime ? n + " là số nguyên tố." : n + " không phải số nguyên tố.";
+    }
+
+    document.getElementById("result").innerHTML = result;
+  }
+</script>
+</body>
+</html>
